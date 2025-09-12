@@ -6,9 +6,13 @@ import { Text } from 'src/ui/text';
 
 import styles from './Article.module.scss';
 
-export const Article = () => {
+interface IArticleProps {
+	onClose: () => void;
+}
+
+export const Article = ({ onClose }: IArticleProps) => {
 	return (
-		<article className={clsx(styles.article)}>
+		<article className={clsx(styles.article)} onClick={onClose}>
 			<Text as='h1' size={45} weight={800} uppercase dynamicLite>
 				Портрет Западной Швейцарии
 			</Text>
