@@ -38,8 +38,10 @@ export const ArticleParamsForm = ({
 	const [formState, setFormState] = useState<ArticleStateType>(pageState);
 
 	useEffect(() => {
-		setFormState(pageState);
-	}, [pageState]);
+		if (isOpen) {
+			setFormState(pageState);
+		}
+	}, [isOpen, pageState]);
 
 	const submitHandler = useCallback(
 		(e: React.FormEvent) => {
@@ -50,6 +52,7 @@ export const ArticleParamsForm = ({
 	);
 
 	const resetHandler = useCallback(() => {
+		setFormState(defaultArticleState);
 		setPageState(defaultArticleState);
 	}, [pageState]);
 
